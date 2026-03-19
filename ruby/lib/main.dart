@@ -7,75 +7,64 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: ProfileCard());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ProductScreen(),
+    );
   }
 }
 
-class ProfileCard extends StatelessWidget {
+class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[200],
       body: Center(
         child: Container(
-          width: 320,
-          padding: EdgeInsets.all(20),
+          width: 250,
+          padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
             color: Colors.white,
+            border: Border.all(color: Colors.black12),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Profile Image
-              CircleAvatar(
-                radius: 55,
-                backgroundImage: AssetImage('assets/images/profile.jpg'),
+              // Product Image
+              Image.asset(
+                'assets/images/earbuds.jpg', // your image
+                height: 120,
+                fit: BoxFit.cover,
               ),
 
-              SizedBox(height: 15),
+              SizedBox(height: 10),
 
-              // Name
+              // Product Name
               Text(
-                'Roshni Gautam',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                "Wireless Earbuds",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
 
               SizedBox(height: 5),
 
-              // Role
-              Text('Flutter Developer', style: TextStyle(color: Colors.grey)),
+              // Price
+              Text("\$50", style: TextStyle(fontSize: 16, color: Colors.green)),
 
               SizedBox(height: 15),
-              Divider(),
-              SizedBox(height: 10),
 
-              // Email (CENTERED)
-              Align(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.email, color: Colors.blue),
-                    SizedBox(width: 8),
-                    Text('gautam3333roshni@email.com'),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: 10),
-
-              // PHONE (100% CENTERED)
-              Align(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.phone, color: Colors.green),
-                    SizedBox(width: 8),
-                    Text('+91 9258638834'),
-                  ],
+              // Buy Now Button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    print("Buy Now clicked");
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                  ),
+                  child: Text("Buy Now"),
                 ),
               ),
             ],
